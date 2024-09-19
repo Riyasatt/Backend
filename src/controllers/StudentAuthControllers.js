@@ -42,7 +42,11 @@ export const signUpStudent = async (req, res) => {
     const token = createToken(user.id)
 
     // Store token in cookies
-    res.cookie('jwt', token, { httpOnly: true })
+    res.cookie('jwt', token, {
+      httpOnly: true,
+      secure: true, // Ensure it's only sent over HTTPS
+      sameSite: 'None', // Important for cross-origin cookies
+    })
 
     res.status(200).send('Signup successful and user logged in');
 
@@ -65,7 +69,11 @@ export const signInStudent = async (req, res) => {
     const token = createToken(user.id)
 
     // Store token in cookies
-    res.cookie('jwt', token, { httpOnly: true })
+    res.cookie('jwt', token, {
+      httpOnly: true,
+      secure: true, // Ensure it's only sent over HTTPS
+      sameSite: 'None', // Important for cross-origin cookies
+    })
 
     res.status(200).send('Login successful');
 
