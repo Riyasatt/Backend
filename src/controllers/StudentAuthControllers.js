@@ -1,6 +1,5 @@
 import { eq } from "drizzle-orm";
 import { db } from "../db/index.js";
-// import { Student_Academic_Data, Student_Address_Data, Student_Application_Reference, Student_College_Data, Student_Course_Data, Student_Document_Data, Student_Personal_Data, Student_User } from "../db/schema.js";
 import bcrypt from "bcryptjs";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken"

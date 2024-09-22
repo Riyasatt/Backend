@@ -21,6 +21,7 @@ export const Student_User = pgTable("Student_Users", {
 export const Student_Application_Reference = pgTable("Student_Application_References",{
   ApplicationID: serial("ApplicationID").primaryKey(),
   StudentID: integer("StudentID").references(()=> Student_User.id),
+  ApplicationStatus : varchar("ApplicationStatus").default("Pending"),
   updateAccess : boolean("UpdateAccess").default(false)
 })
 
@@ -77,6 +78,17 @@ export const Student_Document_Data = pgTable("Student_Document_Data",{
   disabilityCertificate: varchar("disabilityCertificate"),
 
 })
+
+
+export const SAG_Bureau_User = pgTable("SAG_Bureau_User", {
+  id: serial("id").primaryKey(),
+  UserId: varchar("UserId").notNull(),
+  Username: varchar("Username", { length: 255 }).notNull(),
+  EmailID: varchar("EmailID", { length: 255 }).notNull().unique(),
+  Password: varchar("Password").notNull(), 
+});
+
+
 
 
 
