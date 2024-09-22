@@ -13,7 +13,7 @@ const port = process.env.PORT || 3001;
 
 app.use(
     cors({
-        origin : [process.env.ORIGIN, process.env.ORIGIN2],
+        origin : ["https://student-pmsss.vercel.app", "https://sag-bureau.vercel.app"],
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
         credentials: true
     })
