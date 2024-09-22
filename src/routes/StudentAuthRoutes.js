@@ -22,4 +22,6 @@ StudentAuthRoutes.post('/submit-form',verifyToken, upload.fields([
       { name: 'disabilityCertificate', maxCount: 1 }
     ]) ,handleSubmitForm)
 
+    
+
 export default StudentAuthRoutes
