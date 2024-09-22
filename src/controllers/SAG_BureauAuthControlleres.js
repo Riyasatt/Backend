@@ -284,7 +284,7 @@ export const changeApplicationStatusToVerified = async(req,res) => {
     if (userResult.length === 0) return res.status(404).send('User not found');
 
     
-    const updateResult = await db.update(Student_Application_Reference).set({ApplicationStatus : "Verified"})
+    const updateResult = await db.update(Student_Application_Reference).set({ApplicationStatus : "Verified"}).where(eq(Student_Application_Reference, applicationId))
 
     res.status(200).send('Changed the Student Status to Verified');
 
@@ -303,7 +303,7 @@ export const changeApplicationStatusToUnVerified = async(req,res) => {
     if (userResult.length === 0) return res.status(404).send('User not found');
 
     
-    const updateResult = await db.update(Student_Application_Reference).set({ApplicationStatus : "UnVerified"})
+    const updateResult = await db.update(Student_Application_Reference).set({ApplicationStatus : "UnVerified"}).where(eq(Student_Application_Reference, applicationId))
 
     res.status(200).send('Changed the Student Status to Unverified');
 
@@ -322,7 +322,7 @@ export const changeApplicationStatusToPending = async(req,res) => {
     if (userResult.length === 0) return res.status(404).send('User not found');
 
     
-    const updateResult = await db.update(Student_Application_Reference).set({ApplicationStatus : "Pending"})
+    const updateResult = await db.update(Student_Application_Reference).set({ApplicationStatus : "Pending"}).where(eq(Student_Application_Reference, applicationId))
 
     res.status(200).send('Changed the Student Status to Pending');
 
