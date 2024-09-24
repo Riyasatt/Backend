@@ -13,13 +13,12 @@ const port = process.env.PORT || 3001;
 
 app.use(
     cors({
-        origin : ["https://student-pmsss.vercel.app", "https://sag-bureau.vercel.app"],
+        origin : [process.env.ORIGIN, process.env.ORIGIN2],
         methods: ['GET', 'POST', 'PUT', 'DELETE', 'PATCH'],
         credentials: true
     })
 )
 
-app.use("/uploads/", express.static("uploads/"))
 
 
 app.use(cookieParser())

@@ -1,6 +1,7 @@
 import { Router } from "express";
 import {  CheckAuth, handleSubmitForm, LogoutStudent, signInStudent, signUpStudent } from "../controllers/StudentAuthControllers.js";
 import { upload, verifyToken } from "../middlewares/AuthMiddleware.js";
+import uploadMultiple from "../utils/cloudinary.js";
 
 
 const StudentAuthRoutes = Router()
@@ -20,7 +21,7 @@ StudentAuthRoutes.post('/submit-form',verifyToken, upload.fields([
       { name: 'incomeCertificate', maxCount: 1 },
       { name: 'domicileCertificate', maxCount: 1 },
       { name: 'disabilityCertificate', maxCount: 1 }
-    ]) ,handleSubmitForm)
+    ]), uploadMultiple ,handleSubmitForm)
 
     
 

@@ -4,6 +4,8 @@ import bcrypt from "bcryptjs";
 import { compare } from "bcrypt";
 import jwt from "jsonwebtoken"
 import { Student_Academic_Data, Student_Application_Reference, Student_Document_Data, Student_Form_Data, Student_User } from "../db/schema.js";
+import cloudinary from "../utils/cloudinary.js";
+
 
 const maxAge =  15 * 60 * 1000;
 
@@ -104,9 +106,10 @@ export const handleSubmitForm = async (req, res) => {
     const academicRecords = JSON.parse(req.body.academicRecords);
 
     // Extract files
-    const files = req.files;
+    const files = req.imageUrls;
 
-    
+
+
     const isApplicationAlreadySubmitted = await db.select().from(Student_Application_Reference).where(eq(Student_Application_Reference.StudentID, userId))
 
     if(isApplicationAlreadySubmitted.length > 0) {
@@ -132,7 +135,7 @@ export const handleSubmitForm = async (req, res) => {
 
 
     const documentData = Object.keys(files).reduce((acc, key) => {
-      acc[key] = files[key][0].path;
+      acc[key] = files[key][0];
       return acc;
     }, {});
 

@@ -10,7 +10,7 @@ import {
 export const Student_User = pgTable("Student_Users", {
   id: serial("id").primaryKey(),
   StudentName: varchar("StudentName", { length: 255 }).notNull(),
-  MobileNumber: integer("MobileNumber").notNull().unique(),
+  MobileNumber: varchar("MobileNumber").notNull().unique(),
   DOB: date("DOB").notNull(), // Date of Birth
   Gender: varchar("Gender", { length: 10 }).notNull(),
   EmailID: varchar("EmailID", { length: 255 }).notNull().unique(),
@@ -35,7 +35,7 @@ export const Student_Form_Data = pgTable("Student_Form_Data", {
   Gender: varchar("Gender", { length: 10 }).notNull(),
   Category : varchar("Category").notNull(),
   EmailID: varchar("EmailID", { length: 255 }).notNull(),
-  FamilyIncome: integer("FamilyIncome").notNull(),
+  FamilyIncome: varchar("FamilyIncome").notNull(),
   CollegeName: varchar("CollegeName", { length: 255 }).notNull(),
   CollegeAddress: varchar("CollegeAddress").notNull(),
   CollegeEmailID: varchar("CollegeEmailID").notNull(),
